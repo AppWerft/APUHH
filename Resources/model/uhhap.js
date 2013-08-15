@@ -10,7 +10,7 @@ var getDistance = function(lat1, lon1, lat2, lon2) {
 };
 
 /*  INIT       */
-var AccessPointList = function() {
+var UHHAccessPoints = function() {
 	this.initGPS();
 	this.points = require('depot/apoints').apoints.kml.Document.Placemark;
 	this.locales = {};
@@ -39,11 +39,11 @@ var AccessPointList = function() {
 	}
 	return this;
 }
-AccessPointList.prototype.getLocales = function(_args) {
+UHHAccessPoints.prototype.getLocales = function(_args) {
 	return this.locales;
 }
 
-AccessPointList.prototype.initGPS = function(_args) {
+UHHAccessPoints.prototype.initGPS = function(_args) {
 	Ti.App.GMap = (Ti.Platform.osname == 'android') ? require('ti.map') : Ti.Map;
 	if (Ti.Platform.osname == 'android') {
 		if (Ti.App.GMap.isGooglePlayServicesAvailable() != Ti.App.GMap.SUCCESS) {
@@ -63,7 +63,7 @@ AccessPointList.prototype.initGPS = function(_args) {
 	}
 	Ti.Geolocation.purpose = "Recieve User Location";
 }
-AccessPointList.prototype.getList = function(_args) {
+UHHAccessPoints.prototype.getList = function(_args) {
 	_args.onload(this.points);
 	var self = this;
 	Ti.Geolocation.addEventListener('location', function(_position) {
@@ -84,7 +84,7 @@ AccessPointList.prototype.getList = function(_args) {
 	});
 }
 
-AccessPointList.prototype.getUserLocation = function(_args) {
+UHHAccessPoints.prototype.getUserLocation = function(_args) {
 	if (_args.log)
 		_args.logsetText('Retrieving your position …');
 	Ti.Geolocation.getCurrentPosition(function(_e) {
@@ -101,4 +101,4 @@ AccessPointList.prototype.getUserLocation = function(_args) {
 
 	});
 }
-module.exports = AccessPointList;
+module.exports = UHHAccessPoints;

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><ti:app xmlns:ti="http://ti.appcelerator.org">
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>de.appwerft.uhhap</id>
     <name>ap.UHH</name>
     <version>1.01</version>
@@ -31,6 +32,9 @@
         <module platform="android">ti.map</module>
     </modules>
     <deployment-targets>
+        <target device="tizen">false</target>
+        <target device="mobileweb">false</target>
+        <target device="blackberry">false</target>
         <target device="android">true</target>
         <target device="ipad">false</target>
         <target device="iphone">true</target>
@@ -46,7 +50,8 @@
             <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
             <uses-permission android:name="com.map.permission.MAPS_RECEIVE"/>
             <application>
-                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyD_YIXL3LNScLptaNwV-ZuKZyDmYmXoTXM"/>
+                <meta-data
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyD_YIXL3LNScLptaNwV-ZuKZyDmYmXoTXM"/>
             </application>
         </manifest>
     </android>
